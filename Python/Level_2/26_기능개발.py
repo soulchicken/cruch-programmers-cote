@@ -1,0 +1,16 @@
+def solution(progresses, speeds):
+    answer = []
+    while progresses:
+        for i in range(len(progresses)):
+            if progresses[i] != 100:
+                progresses[i] = min(progresses[i]+speeds[i], 100)
+        count = 0
+        while progresses:
+            if progresses[0] != 100:
+                break
+            progresses.pop(0)
+            speeds.pop(0)
+            count += 1
+        if count:
+            answer.append(count)
+    return answer
